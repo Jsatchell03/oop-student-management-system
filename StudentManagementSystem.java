@@ -26,8 +26,6 @@ public class StudentManagementSystem {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] record = line.split(",");
-                System.out.println(Arrays.toString(record));
-
                 int id = Integer.parseInt(record[0]);
                 String name = record[1];
                 Date dob = Date.parseString(record[2]);
@@ -44,7 +42,6 @@ public class StudentManagementSystem {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] record = line.split(",");
-                System.out.println(Arrays.toString(record));
                 int id = Integer.parseInt(record[0]);
                 String title = record[1];
                 HashSet<Integer> students = Arrays.stream(record[2].split(";"))
@@ -85,9 +82,75 @@ public class StudentManagementSystem {
         }
     }
 
-    public void openMainMenu(){
-
+    public int promptMenuChoice(String prompt, int max){
+        System.out.print(prompt);
+        int choice = input.nextInt();
+        while(choice < 1 || choice > max){
+            System.out.printf("Invalid Selection: Enter a number from 1 - %d.\n", max);
+            System.out.print("Enter your selection to continue: ");
+            choice = input.nextInt();
+        }
+        input.nextLine();
+        return choice;
     }
 
+    public void openMainMenu(){
+        int choice = promptMenuChoice(
+                "--- Student Information Management System Console ---\n" +
+                        "1. Student Management Menu\n" +
+                        "2. Course Management Menu\n" +
+                        "3. Enrollment Menu\n" +
+                        "4. Close System\n" +
+                        "Enter your selection to continue: ",
+                4
+        );
+
+        switch (choice){
+            case 1 -> openStudentManagementMenu();
+            case 2 -> openCourseManagementMenu();
+            case 3 -> openEnrollmentMenu();
+        }
+    }
+
+    public void openStudentManagementMenu(){
+        int choice = promptMenuChoice(
+                "--- Student Management Menu ---\n" +
+                        "1. View All Student Records\n" +
+                        "2. View One Student Record\n" +
+                        "3. Add New Student Record\n" +
+                        "4. Update Student Record\n" +
+                        "5. Delete Student Record\n" +
+                        "6. Return To Main Menu\n" +
+                        "Enter your selection to continue: ",
+                6
+        );
+    }
+
+    public void openCourseManagementMenu(){
+        int choice = promptMenuChoice(
+                "--- Course Management Menu ---\n" +
+                        "1. View All Course Records\n" +
+                        "2. View One Course Record\n" +
+                        "3. Add New Course Record\n" +
+                        "4. Update Course Record\n" +
+                        "5. Delete Course Record\n" +
+                        "6. Return To Main Menu\n" +
+                        "Enter your selection to continue: ",
+                6
+        );
+    }
+
+    public void openEnrollmentMenu(){
+        int choice = promptMenuChoice(
+                "--- Enrollment Management Menu ---\n" +
+                        "1. Enroll Student\n" +
+                        "2. Withdraw Student\n" +
+                        "3. View Student Enrolled Courses\n" +
+                        "4. View Course Enrolled Students\n" +
+                        "5. Return To Main Menu\n" +
+                        "Enter your selection to continue: ",
+                5
+        );
+    }
 
 }

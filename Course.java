@@ -43,12 +43,12 @@ public class Course {
         }
     }
 
-    public void unenrollStudent(int studentId){
+    public void withdraw(int studentId){
         if(!enrolledStudents.contains(studentId)){
             System.out.println("Student is not enrolled in this class.");
         }else{
             enrolledStudents.remove(studentId);
-            System.out.println("Student successfully unenrolled.");
+            System.out.println("Student successfully withdrawn.");
         }
     }
 }
