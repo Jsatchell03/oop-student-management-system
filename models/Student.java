@@ -1,3 +1,5 @@
+package models;
+
 import java.util.HashSet;
 
 
@@ -48,19 +50,19 @@ public class Student {
     public void enroll(Course course){
         int courseId = course.getId();
         if(enrolledCourses.contains(courseId)){
-            System.out.println("Student is already enrolled in this class.");
+            System.out.println("models.Student is already enrolled in this class.");
         }else{
             enrolledCourses.add(courseId);
-            System.out.println("Student successfully enrolled.");
+            System.out.println("models.Student successfully enrolled.");
         }
     }
 
     public void withdraw(int courseId){
         if(!enrolledCourses.contains(courseId)){
-            System.out.println("Student is not enrolled in this class.");
+            System.out.println("models.Student is not enrolled in this class.");
         }else{
             enrolledCourses.remove(courseId);
-            System.out.println("Student successfully withdrawn.");
+            System.out.println("models.Student successfully withdrawn.");
         }
     }
 }

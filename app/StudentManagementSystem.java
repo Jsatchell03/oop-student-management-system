@@ -1,3 +1,9 @@
+package app;
+
+import models.Course;
+import models.Date;
+import models.Student;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.io.BufferedReader;
@@ -96,9 +102,9 @@ public class StudentManagementSystem {
 
     public void openMainMenu(){
         int choice = promptMenuChoice(
-                "--- Student Information Management System Console ---\n" +
-                        "1. Student Management Menu\n" +
-                        "2. Course Management Menu\n" +
+                "--- models.Student Information Management System Console ---\n" +
+                        "1. models.Student Management Menu\n" +
+                        "2. models.Course Management Menu\n" +
                         "3. Enrollment Menu\n" +
                         "4. Close System\n" +
                         "Enter your selection to continue: ",
@@ -114,12 +120,12 @@ public class StudentManagementSystem {
 
     public void openStudentManagementMenu(){
         int choice = promptMenuChoice(
-                "--- Student Management Menu ---\n" +
-                        "1. View All Student Records\n" +
-                        "2. View One Student Record\n" +
-                        "3. Add New Student Record\n" +
-                        "4. Update Student Record\n" +
-                        "5. Delete Student Record\n" +
+                "--- models.Student Management Menu ---\n" +
+                        "1. View All models.Student Records\n" +
+                        "2. View One models.Student Record\n" +
+                        "3. Add New models.Student Record\n" +
+                        "4. Update models.Student Record\n" +
+                        "5. Delete models.Student Record\n" +
                         "6. Return To Main Menu\n" +
                         "Enter your selection to continue: ",
                 6
@@ -128,12 +134,12 @@ public class StudentManagementSystem {
 
     public void openCourseManagementMenu(){
         int choice = promptMenuChoice(
-                "--- Course Management Menu ---\n" +
-                        "1. View All Course Records\n" +
-                        "2. View One Course Record\n" +
-                        "3. Add New Course Record\n" +
-                        "4. Update Course Record\n" +
-                        "5. Delete Course Record\n" +
+                "--- models.Course Management Menu ---\n" +
+                        "1. View All models.Course Records\n" +
+                        "2. View One models.Course Record\n" +
+                        "3. Add New models.Course Record\n" +
+                        "4. Update models.Course Record\n" +
+                        "5. Delete models.Course Record\n" +
                         "6. Return To Main Menu\n" +
                         "Enter your selection to continue: ",
                 6
@@ -143,14 +149,22 @@ public class StudentManagementSystem {
     public void openEnrollmentMenu(){
         int choice = promptMenuChoice(
                 "--- Enrollment Management Menu ---\n" +
-                        "1. Enroll Student\n" +
-                        "2. Withdraw Student\n" +
-                        "3. View Student Enrolled Courses\n" +
-                        "4. View Course Enrolled Students\n" +
+                        "1. Enroll models.Student\n" +
+                        "2. Withdraw models.Student\n" +
+                        "3. View models.Student Enrolled Courses\n" +
+                        "4. View models.Course Enrolled Students\n" +
                         "5. Return To Main Menu\n" +
                         "Enter your selection to continue: ",
                 5
         );
+    }
+
+    public void viewStudentRecords(){
+
+    }
+
+    public void viewStudentRecord(int id){
+
     }
 
 }
