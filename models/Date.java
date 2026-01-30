@@ -1,38 +1,41 @@
 package models;
 
 public class Date {
-    private int month;
-    private int day;
-    private int year;
+    private String month;
+    private String day;
+    private String year;
 
-    public Date(int month, int day, int year){
+    public Date(String month, String day, String year) {
         this.month = month;
         this.day = day;
         this.year = year;
     }
 
-    public int getMonth() {
+    public Date(String dateStr) {
+        String[] date = dateStr.split("-");
+        this.month = date[0];
+        this.day = date[1];
+        this.year = date[2];
+    }
+
+    public String getMonth() {
         return month;
     }
 
-    public int getDay() {
+    public String getDay() {
         return day;
     }
 
-    public int getYear() {
+    public String getYear() {
         return year;
     }
 
-    public boolean equals(Date date){
-        return date.getMonth() == month && date.getDay() == day && date.getYear() == year;
+    public boolean equals(Date date) {
+        return date.toString().equals(month + "-" + day + "-" + year);
     }
 
-    public String toString(){
-        return String.format("%d-%d-%d", month, day, year);
+    public String toString() {
+        return month + "-" + day + "-" + year;
     }
 
-    public static Date parseString(String date){
-        String[] splitDate = date.split("-");
-        return new Date(Integer.parseInt(splitDate[0]), Integer.parseInt(splitDate[1]), Integer.parseInt(splitDate[2]));
-    }
 }

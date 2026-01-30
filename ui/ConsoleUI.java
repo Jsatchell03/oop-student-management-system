@@ -1,8 +1,10 @@
 package ui;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Collection;
 import java.util.Scanner;
-import java.util.Collection;
 import java.util.Set;
 
 import models.*;
@@ -68,8 +70,8 @@ public class ConsoleUI {
                 "--- Enrollment Management Menu ---\n" +
                         "1. Enroll Student\n" +
                         "2. Withdraw Student\n" +
-                        "3. View Student Enrolled Courses\n" +
-                        "4. View Course Enrolled Students\n" +
+                        "3. View Student's Enrolled Courses\n" +
+                        "4. View Course's Enrolled Students\n" +
                         "5. Return To Main Menu\n" +
                         "Enter your selection to continue: ",
                 5
@@ -96,29 +98,64 @@ public class ConsoleUI {
         input.nextLine();
     }
 
-    public int promptId(String prompt, Set<Integer> validIds) {
+    public int promptID(String prompt, Set<Integer> validIds) {
         int id;
         while (true) {
             System.out.print(prompt);
             id = input.nextInt();
-            if (validateId(id, validIds)) {
+            if (validateID(id, validIds)) {
                 input.nextLine();
                 return id;
             }
         }
     }
 
-    public boolean validateId(int id, Set<Integer> validIds) {
+    public String promptString(String prompt) {
+        String str;
+        while (true) {
+            System.out.print(prompt);
+            str = input.nextLine();
+            if (!str.isEmpty()) {
+                return str;
+            }
+            System.out.println("Invalid String: Input cannot be empty.");
+        }
+
+    }
+
+    public Date promptDate(String prompt) {
+        String dateStr;
+        while (true) {
+            System.out.print(prompt);
+            dateStr = input.nextLine();
+            if (validateDate(dateStr)) {
+                return new Date(dateStr);
+            }
+        }
+    }
+
+    public boolean validateDate(String dateStr) {
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy");
+            LocalDate.parse(dateStr, formatter);
+            return true;
+        } catch (DateTimeParseException e) {
+            System.out.printf("Invalid Date '%s'.\n", dateStr);
+            return false;
+        }
+    }
+
+    public boolean validateID(int id, Set<Integer> validIds) {
         if (id < 0) {
             System.out.printf("Invalid ID '%d': ID cannot be negative.\n", id);
             return false;
         }
 
         if (!validIds.contains(id)) {
-            System.out.printf("Invalid ID '%d': No matching ID found\n", id);
+            System.out.printf("Invalid ID '%d': No matching ID found.\n", id);
             return false;
         }
-
         return true;
+
     }
 }
